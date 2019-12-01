@@ -1,0 +1,409 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0042)http://www.if.ufrgs.br/~thielo/robots.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<title></title>
+	<meta name="generator" content="LibreOffice 4.2.8.2 (Linux)">
+	<meta name="author" content="Thielo ">
+	<meta name="created" content="20171011;0">
+	<meta name="changedby" content="Thielo ">
+	<meta name="changed" content="20171011;133426028025878">
+	<meta name="changedby" content="Thielo ">
+	<meta name="changedby" content="Thielo ">
+	<meta name="changedby" content="Thielo ">
+	<style type="text/css">
+	<!--
+		p { margin-bottom: 0.1in; color: #000000; line-height: 120% }
+		h1 { margin-bottom: 0.08in; font-variant: normal; color: #000000 }
+		h1.western { font-style: normal }
+		h1.cjk { font-family: sans-serif; font-style: normal }
+		h1.ctl { font-family: sans-serif; font-style: normal }
+		h2 { font-variant: normal; color: #000000 }
+		h2.western { font-style: normal }
+		h2.cjk { font-family: "Droid Sans Fallback"; font-style: normal }
+		h2.ctl { font-family: "FreeSans"; font-style: normal }
+		h2.date-western { font-style: normal; text-align: center }
+		h2.date-cjk { font-family: "Droid Sans Fallback"; font-style: normal; text-align: center }
+		h2.date-ctl { font-family: "FreeSans"; font-style: normal; text-align: center }
+		h1.title-western { font-style: normal; text-align: center }
+		h1.title-cjk { font-family: sans-serif; font-style: normal; text-align: center }
+		h1.title-ctl { font-family: sans-serif; font-style: normal; text-align: center }
+		a:link { so-language: zxx }
+		code { color: #000000; background: #efe6ee }
+		code.cjk { font-family: "Droid Sans Fallback", monospace }
+	-->
+	</style>
+</head>
+<body lang="en-US" text="#000000" bgcolor="#f9f9f9" dir="ltr" style="background: #f9f9f9">
+<h2 class="date-western" style="margin-left: 0.83in; margin-right: 0.83in; margin-top: 0in; margin-bottom: 0.1in">
+<br><br>
+</h2>
+<h2 class="date-western" style="margin-left: 0.83in; margin-right: 0.83in; margin-top: 0in; margin-bottom: 0.1in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">Disciplina
+de Práticas de Programação</font></span></h2>
+<h1 class="title-western" style="margin-left: 0.83in; margin-right: 0.83in; margin-top: 0in; margin-bottom: 0.1in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">Simulação
+de Robôs</font></span></h1>
+<h2 class="date-western" style="margin-left: 0.83in; margin-right: 0.83in; margin-top: 0in; margin-bottom: 0.1in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">10/2017</font></span></h2>
+<h1 class="western" style="margin-right: 0.81in; margin-top: 0in; margin-bottom: 0.1in; page-break-before: auto; page-break-after: avoid"><a name="toc--1"></a>
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">1 Introdução
+</font></span>
+</h1>
+<p style="margin-right: 0.81in"><br><br>
+</p>
+<p style="margin-left: 0.5in; margin-right: 0.81in; line-height: 120%; page-break-before: auto">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">O
+objetivo deste trabalho é implementar robôs com comportamento
+variado. Os robôs tentarão encontrar a saída de um labirinto
+similar ao seguinte:</font></span></p>
+
+<table border="1" align="CENTER"> <tbody><tr>
+<td>
+<img src="./robots_files/maze-25x40.png" width="300" height="183" alt="Class maze">
+</td></tr></tbody></table>
+
+<h2 class="western" style="margin-right: 0.81in; margin-top: 0in; margin-bottom: 0.1in; page-break-before: auto; page-break-after: avoid"><a name="toc--1.1"></a>
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">1.1 Robôs</font></span></h2>
+<p style="margin-right: 0.81in"><br><br>
+</p>
+<p style="margin-left: 0.5in; margin-right: 0.81in; line-height: 120%; page-break-before: auto">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">Quando
+criado, um robô receberá (através de seu construtor), a <b>posição
+inicial</b>, um <b>ponteiro para um labirinto</b> e o <b>número
+máximo de passos</b> permitidos para que ele atinja a saída.</font></span></p>
+<p style="margin-left: 0.5in; margin-right: 0.81in; line-height: 120%">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">Todos
+os robôs herdam de uma superclasse abstrata chamada <i>Robot</i>, a
+qual define alguns métodos, os quais deverão ser sobreescritos:</font></span></p>
+<table border="1" align="CENTER"> <tbody><tr>
+<td>
+<img src="./robots_files/classrobot.png" width="585" height="330" alt="Class maze">
+</td></tr></tbody></table>
+<ul>
+	<li><p style="margin-right: 0.81in; line-height: 120%; page-break-before: auto">
+	<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif"><font color="#0000ff">Construtor</font>:
+	recebe a posição inicial, o ponteiro para o labirinto e o número
+	máximo permitido de passos;</font></span></p>
+	</li><li><p style="margin-right: 0.81in; line-height: 120%"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif"><font color="#0000ff"><i>draw</i></font>:
+	desenha o robô (veja o exemplo em <i>RobotB9.cpp</i>)</font></span></p>
+	</li><li><p style="margin-right: 0.81in; line-height: 120%"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif"><font color="#0000ff"><i>move</i></font>:
+	movimenta o robô, i.e. modifica suas coordenadas para a posição
+	recebida.</font></span></p>
+	</li><li><p style="margin-right: 0.81in; line-height: 120%"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif"><font color="#0000ff"><i>generateSteps</i></font>:
+	produz a sequência requerida de pontos (<i>Point</i>) para mover o
+	robô da posição inicial à saída do labirinto. A sequência
+	depende do algoritmo de movimento (ver abaixo).<br><b>Nota</b>:
+	considere que um robô tenha saído do labirinto quando a sua
+	posição exceder os limites do mesmo. Considere também que os
+	robôs irão se mover apenas vertical ou horizontalmente.</font></span></p>
+	</li><li><p style="margin-right: 0.81in; line-height: 120%"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif"><font color="#0000ff"><i>getSteps</i></font>:
+	retorna a lista de pontos (um <i>vector</i>) gerado pelo método
+	<i>generateSteps.</i> </font></span>
+	</p>
+</li></ul>
+<p align="left" style="margin-left: 0.5in; margin-right: 0.81in; line-height: 120%; page-break-before: auto">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">A
+idéia é criar robôs que irão tentar sair do labirinto. Dessa
+forma, você deverá implementar três subclasses de <i>Robot</i>, cada
+uma usando um algoritmo de movimento específico:</font></span></p>
+<p style="margin-right: 0.83in"><br><br>
+</p>
+<ul>
+	<li><p style="margin-right: 0.81in; line-height: 120%; page-break-before: auto">
+	<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">O
+	robô <font color="#6b2394"><i><b>Robby</b></i></font>, que sempre
+	se moverá em uma direção (e.g. para a direita). Quando atinge uma
+	parede, o robô deve virar à direita. Caso não seja possível
+	virar à direita, o robô deverá virar à esquerda. Uma vez que
+	este robô provavelmente não será capaz de abandonar o labirinto,
+	ele irá desistir após um número de passos especificado.</font></span></p>
+	</li><li><p style="margin-right: 0.81in; line-height: 120%"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">O
+	robô <font color="#6b2394"><b>Ar-Tur</b></font>, o qual seguirá o
+	labirinto mantendo seu “braço esquerdo” tocando a parede. Dessa
+	maneira, ele sempre irá seguir a parede da esquerda, aonde quer que
+	vá. Este robô irá eventualmente sair do labirinto.</font></span></p>
+	</li><li><p style="margin-right: 0.81in; line-height: 120%"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">O
+	robô <font color="#6b2394"><b>T-800</b></font>, o qual deverá
+	utilizar um algoritmo diferente dos demais – <b>crie o seu
+	próprio</b>! Idealmente, procure desenvolver um algoritmo que
+	permita ao robô sair do labirinto.</font></span></p>
+</li></ul>
+<p style="margin-left: 0.5in; margin-right: 0.81in; line-height: 120%; page-break-before: auto">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">Para
+cada robô, você deverá modificar o método <i>draw</i> para mudar
+a imagem utilizada.</font></span></p>
+<p style="margin-left: 0.5in; line-height: 120%; page-break-before: auto">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif"><i>A
+classe </i><i><b>RobotB9</b></i> implementa um robô simples, cujo
+movimento é completamente randômico. Você pode usá-la como base
+para escrever o código para os demais.</font></span></p>
+<p><br><br>
+</p>
+<h2 class="western" style="margin-right: 0.81in; margin-top: 0in; margin-bottom: 0.1in; page-break-before: auto; page-break-after: avoid"><a name="toc--1.2"></a>
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">1.2 Labirinto</font></span></h2>
+<p style="margin-right: 0.81in"><br><br>
+</p>
+<p style="margin-left: 0.5in; margin-right: 0.81in; line-height: 120%; page-break-before: auto">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">De
+forma similar aos robôs, o labirinto é definido por uma classe
+abstrata </font><i><font face="Arial, sans-serif">Maze</font></i><font face="Arial, sans-serif">:</font></span></p>
+
+
+<table border="1" align="CENTER"> <tbody><tr>
+<td>
+<img src="./robots_files/classmaze.png" width="583" height="224" alt="Class Maze">
+</td></tr></tbody></table>
+
+
+
+<p style="margin-left: 0.83in; margin-right: 0.83in"><br><br>
+</p>
+<ul>
+	<li><p style="margin-right: 0.81in; line-height: 120%; page-break-before: auto">
+	<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif"><font color="#0000ff"><i>isEmpty</i></font>:
+	retorna <i>true</i> se uma dada posição está vazia ou <i>false</i>
+	caso contrário.</font></span></p>
+	</li><li><p style="margin-right: 0.81in; line-height: 120%"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif"><font color="#0000ff"><i>getWidth</i></font>,
+	<i>getHeight</i>: retornam o tamanho do labirinto (largura e
+	altura). </font></span>
+	</p>
+	</li><li><p style="margin-right: 0.81in; line-height: 120%"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif"><font color="#0000ff"><i>getRobot</i></font>:
+	retorna o tipo de robô definido no arquivo (1, 2 or 3). </font></span>
+	</p>
+	</li><li><p style="margin-right: 0.81in; line-height: 120%"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif"><font color="#0000ff"><i>getIniPos</i></font>:
+	retorna a posição inicial do robô, também lida do arquivo.</font></span></p>
+	</li><li><p style="margin-right: 0.81in; line-height: 120%"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif"><font color="#0000ff"><i>loadMaze</i></font>:
+	carrega o labirinto de um arquivo – este método deve finalizar o
+	programa caso os dados estejam corrompidos ou haja um erro de
+	leitura.</font></span></p>
+</li></ul>
+<p style="margin-left: 0.5in; margin-right: 0.81in; line-height: 120%; page-break-before: auto">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">Em
+suma, você precisa criar uma classe que implementa os métodos
+abstratos da <i>Maze</i>. Isto é necessário para que o labirinto
+seja desenhado pela biblioteca gráfica (veja abaixo):</font></span></p>
+<p style="margin-left: 0.83in; margin-right: 0.83in"><br><br>
+</p>
+<p style="margin-left: 0.5in; line-height: 120%; page-break-before: auto">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">O
+formato do arquivo do labirito é como se segue:</font></span></p>
+
+<table border="1" align="CENTER"> <tbody><tr>
+<td>
+<img src="./robots_files/mazedata.png" width="581" height="242" alt="Maze Data">
+</td></tr></tbody></table>
+
+<p style="margin-left: 0.83in; margin-right: 0.83in"><br><br>
+</p>
+<p style="margin-left: 0.5in; margin-right: 0.81in; line-height: 120%; page-break-before: auto">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">Note
+que o labirinto é representado por caracteres, sendo “*”
+(parede) ou um espaço em branco(vazio). </font></span>
+</p>
+<p style="margin-left: 0.5in; margin-right: 0.81in; line-height: 120%">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif"><b><span style="background: #ffff00">Extra</span></b><b>:
+</b>Caso deseje, <b>além de</b> implementar a leitura do labirinto a
+partir de um arquivo, você também poderá criar um método para,
+dependendo de escolha do usuário, gerar seu conteúdo
+algoritmicamente. Nesse caso, seu algoritmo deverá gerar um
+<b>labirinto perfeito.</b></font></span></p>
+<p style="margin-left: 0.5in; line-height: 120%"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">A
+classe </font><i><font face="Arial, sans-serif">TestMaze</font></i><font face="Arial, sans-serif">
+implementa um labirinto de teste, o qual possui apenas paredes de
+contorno e uma saída na parte inferior.</font></span></p>
+<h2 class="western" style="margin-right: 0.81in; margin-top: 0in; margin-bottom: 0.1in; page-break-before: auto; page-break-after: auto"><a name="toc--1.3"></a>
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">1.3 Interface
+Gráfica</font></span></h2>
+<p style="margin-left: 0.5in; margin-right: 0.81in; line-height: 120%; page-break-before: auto">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">No
+intuito de tornar este trabalho mais interessante, será fornecida a
+classe </font><font face="Arial, sans-serif"><i>GL</i></font><font face="Arial, sans-serif">,
+a qual implementa uma visualização do labirinto através da
+biblioteca </font><font face="Arial, sans-serif"><i>OpenGL</i></font><font face="Arial, sans-serif">.
+A classe deve ser utilizada como segue.</font></span></p>
+<p style="margin-left: 0.5in; line-height: 120%; page-break-before: auto">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">O
+programa principal começará chamando <i>GL::init</i>, que
+inicializa a biblioteca gráfica e cria a janela.</font></span></p>
+<p style="margin-left: 0.5in; line-height: 120%; page-break-before: auto">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">Em
+seguida, você deve criar o labirinto e os robôs. Após, você
+deverá chamar</font><i><font face="Arial, sans-serif">GL::setMazeRobot</font></i><font face="Arial, sans-serif">,
+enviando um ponteiro para o labirinto e um ponteiro para o robô:</font></span></p>
+<p><br><br>
+</p>
+
+<table border="1" align="CENTER"> <tbody><tr>
+<td>
+<img src="./robots_files/setmazerobot.png" width="579" height="45" alt="setMazeRobot">
+</td></tr></tbody></table>
+
+<p style="margin-left: 0.5in; margin-right: 0.81in; line-height: 120%; page-break-before: auto">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">Finalmente,
+você deverá chamar <i>GL::loop</i>, a qual nunca irá retornar: </font></span>
+</p>
+
+<table border="1" align="CENTER"> <tbody><tr>
+<td>
+<img src="./robots_files/loop.png" width="580" height="47" alt="Loop">
+</td></tr></tbody></table>
+
+
+
+<p style="margin-left: 0.5in; margin-right: 0.81in; line-height: 120%; page-break-before: auto">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">A
+partir daqui toda a interação ocorrerá a partir da classe <i>GL</i>:</font></span></p>
+<p style="margin-left: 0.5in; margin-right: 0.81in; line-height: 120%">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">você
+<b>NÃO PODERÁ</b> chamar os métodos <i>GL</i> de outras partes do
+programa.</font></span></p>
+<p style="margin-left: 0.5in; line-height: 120%; page-break-before: auto">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">A
+interface gráfica chama generateSteps automaticamente, <i>draw</i> e
+<i>getSteps</i> do robô. Assim, para interagir com a GUI você
+deverá usar os comandos a seguir:</font></span></p>
+<ul>
+	<li><p style="line-height: 120%; page-break-before: auto"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">Setas
+	direita e esquerda: movem para a frente e para trás através de uma
+	lista de passos (obtida pelo método <i>getSteps</i>)</font></span></p>
+	</li><li><p style="line-height: 120%"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">ESC:
+	termina o programa.</font></span></p>
+</li></ul>
+<p style="margin-left: 0.5in; line-height: 120%; page-break-before: auto">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">Note
+que você não precisará criar um objeto GL: todos os métodos são
+estáticos (<i>static</i>).</font></span></p>
+<p style="margin-left: 0.5in; line-height: 120%"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">Resumindo,
+você deverá: </font></span>
+</p>
+<ul>
+	<li><p style="margin-right: 0.81in; line-height: 120%; page-break-before: auto">
+	<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">Implementar
+	uma classe que irá herdar de <i>Maze</i>. </font></span>
+	</p>
+	</li><li><p style="margin-right: 0.81in; line-height: 120%"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">Escrever
+	as 3 classes derivadas de <i>Robot</i>. </font></span>
+	</p>
+</li></ul>
+<p style="margin-left: 0.5in; margin-right: 0.81in; line-height: 120%; page-break-before: auto">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">Veja
+o resultado do programa abaixo, usando as classes </font><i><font face="Arial, sans-serif">TestMaze
+e RobotB9</font></i><font face="Arial, sans-serif">: </font></span>
+</p>
+
+<table border="1" align="CENTER"> <tbody><tr>
+<td>
+<img src="./robots_files/tela.jpg" width="500" height="483" alt="Labirinto">
+</td></tr></tbody></table>
+
+<p style="margin-left: 0.83in; margin-right: 0.83in"><br><br>
+</p>
+<p style="margin-left: 0.5in; margin-right: 0.81in; line-height: 120%; page-break-before: auto">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif"><span style="font-style: normal"><span style="font-weight: normal"><span style="font-variant: normal">Você
+deverá baixar o template de código </span></span></span></font></span><i><b><font face="Arial, sans-serif"><a href="http://www.if.ufrgs.br/~thielo/robots-base.zip"> robots-base.zip
+</a>, </font></b></i><font face="Arial, sans-serif"><span style="font-style: normal"><span style="font-weight: normal"><span style="font-variant: normal">o
+qual</span></span></span></font> <font face="Arial, sans-serif">possui
+todo o material necessário para a realização do trabalho: o
+projeto completo, bibliotecas e alguns exemplos de labirinto. Há um
+único projeto do </font><i><font face="Arial, sans-serif">Code::Blocks</font></i><font face="Arial, sans-serif">,
+mas você deve selecionar o correto destino da compilação (Windows
+ou Linux) uma vez que as bibliotecas são diferentes. As bibliotecas
+de Windows estão inclusas, mas se você estiver utilizando o Linux,
+você deverá instalar a </font><i><font face="Arial, sans-serif">freeglut3-dev</font></i>
+<font face="Arial, sans-serif">e a </font><i><font face="Arial, sans-serif">libjpeg8-dev</font></i><font face="Arial, sans-serif">.
+É fortemente recomendado o uso da versão Linux do trabalho.</font></p>
+<h1 class="western" style="margin-right: 0.81in; margin-top: 0in; margin-bottom: 0.1in; page-break-before: auto; page-break-after: avoid"><a name="toc--2"></a>
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">2 <b>Avaliação</b>
+</font></span>
+</h1>
+<p style="margin-right: 0.81in"><br><br>
+</p>
+<p style="margin-left: 0.83in; margin-right: 0.83in"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">Por
+favor, leia atentamente as regras de avaliação: </font></span>
+</p>
+<p style="margin-left: 0.83in; margin-right: 0.83in"><br><br>
+</p>
+<h2 class="western" style="margin-right: 0.81in; margin-top: 0in; margin-bottom: 0.1in; page-break-before: auto; page-break-after: avoid"><a name="toc--2.1"></a>
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">2.1 Lógica
+principal </font></span>
+</h2>
+<p style="margin-right: 0.81in"><br><br>
+</p>
+<p style="margin-left: 0.5in; margin-right: 0.81in; line-height: 120%; page-break-before: auto">
+ <span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">Ao
+final de sua implementação, sua solução deverá:</font></span></p>
+<ul>
+	<li><p style="margin-right: 0.81in; line-height: 120%; page-break-before: auto">
+	<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">Carregar
+	e apresentar o labirinto corretamente a partir de um arquivo texto
+	(use os arquivos fornecidos para testar sua aplicação).</font></span></p>
+	</li><li><p style="margin-right: 0.81in; line-height: 120%"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">Implementar
+	corretamente o algoritmo de movimento para cada tipo de robô.</font></span></p>
+	<p style="margin-right: 0.83in"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">Pontuação:</font></span></p>
+	<ul>
+		<li><p style="margin-right: 0.83in"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">Carregar
+		o labirinto de um arquivo texto (classe que estende <i>Maze</i>):
+		20%</font></span></p>
+		</li><li><p style="margin-right: 0.83in"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">Implementação
+		do Robby: 20%</font></span></p>
+		</li><li><p style="margin-right: 0.83in"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">Implementação
+		do Ar-Tur: 20%</font></span></p>
+		</li><li><p style="margin-right: 0.83in"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">Implementação
+		do T-800 : 30%</font></span></p>
+		</li><li><p style="margin-right: 0.83in"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">Uso
+		adequado de conceitos de orientação a objetos: 10%</font></span></p>
+		</li><li><p style="margin-right: 0.83in"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">Implementar
+		a geração automática do labirinto perfeito: 5% (extra)</font></span></p>
+	</li></ul>
+</li></ul>
+<p style="margin-right: 0.83in"><br><br>
+</p>
+<h2 class="western" style="margin-right: 0.81in; margin-top: 0in; margin-bottom: 0.1in; page-break-before: auto; page-break-after: avoid"><a name="toc--2.2"></a>
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">2.2 Código
+fonte</font></span></h2>
+<p style="margin-right: 0.81in"><br><br>
+</p>
+<ul>
+	<li><p style="margin-right: 0.83in"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">Toda
+	a comunicação com o usuário deverá ser feita através da GUI
+	(interface gráfica de usuário) – não será permitido usar o
+	terminal para entrada ou saída.</font></span></p>
+	</li><li><p style="margin-right: 0.83in"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">A
+	implementação deverá seguir a convenção de código C++ (i.e.
+	nomes de classes deverão iniciar com maiúsculas; atributos,
+	métodos e variáveis locais deverão iniciar com minúsculas). </font></span>
+	</p>
+	</li><li><p style="margin-right: 0.83in"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">É
+	<b>exigência</b> explorar herança e polimorfismo.</font></span></p>
+	</li><li><p style="margin-right: 0.83in"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">O
+	código deve estar corretamente identado e apropriadamente
+	comentado.</font></span></p>
+</li></ul>
+<h2 class="western" style="margin-right: 0.81in; margin-top: 0in; margin-bottom: 0.1in; page-break-before: auto; page-break-after: avoid"><a name="toc--2.3"></a>
+<span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">2.3 Geral
+</font></span>
+</h2>
+<ul>
+	<li><p style="margin-right: 0.83in"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">Os
+	trabalhos devem acontecer em grupos <b>cujos tamanhos serão
+	determinados na aula de divulgação deste enunciado</b>. A pasta do
+	projeto deverá ser comprimida como um arquivo <i>zip</i> e
+	submetida pelo <i>Moodle</i> até a data limite de entrega.</font></span></p>
+	</li><li><p style="margin-right: 0.83in"><span style="display: inline-block; border: none; padding: 0in"><font face="Arial, sans-serif">A
+	nota dependerá da apresentação no laboratório. Submissões sem
+	apresentação não serão consideradas, assim como soluções com
+	funcionamento parcial ou que não compilem. Todos os integrantes do
+	grupo deverão ser capazer de responder às perguntas sobre o
+	código.</font></span></p>
+	</li><li><p style="margin-right: 0.83in"><span style="display: inline-block; border: none; padding: 0in"><b><font face="Arial, sans-serif">Os
+	grupos serão incentivados a interagirem entre si. No entanto,
+	trabalhos com códigos idênticos receberão penalidade severa na
+	nota atribuída.</font></b></span></p>
+</li></ul>
+<p align="right"><font face="Arial, sans-serif"><font size="2" style="font-size: 10pt">Este
+enunciado foi elaborado com base em material gentilmente cedido pelo
+professor Marcelo Cohen.</font></font></p>
+
+
+</body></html>
